@@ -2,7 +2,7 @@
   <arg name="root_dir" default="/home/ricardo/"/>  
   <arg name="file_dir" default="sac_stage_1/sac_env1_2d_3_layers"/>
   <arg name="testing" default="false"/> 
-  <arg name="world" default="stage_1_aerial"/> 
+  <arg name="world" default="stage_3_aerial"/> 
   <arg name="graphic_int" default="true"/> 
   <arg name="max_lasers" default="false"/> 
   <arg name="min_lasers" default="true"/> 
