@@ -29,6 +29,9 @@
             </box>
 
             <center_of_buoyancy>${cob}</center_of_buoyancy>
+            <metacentric_width>0.4</metacentric_width>
+            <metacentric_length>0.4</metacentric_length>
+            <water_level_plane_area>0.48</water_level_plane_area>
             <hydrodynamic_model>
                 <type>fossen</type>
 
