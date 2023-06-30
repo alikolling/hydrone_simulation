@@ -1,0 +1,27 @@
+name: hydrone
+root: ./
+startup_window: roscore
+pre_window: export UAV_NAMESPACE=red
+windows:
+  - roscore:
+      layout: tiled
+      panes:
+        - roscore        
+        - export SITL_RITW_TERMINAL="tmux new-window -d -n:ardupilot1"; waitForRos; 
+          roslaunch ardupilot_gazebo sim_vehicle.launch --wait 
+          enable_console:=true
+          additional_arguments:="--no-rebuild"
+        - waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch --wait
+  - gazebo:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch hydrone_start hydrone.launch use_sim_time:=true --wait
+  - arm&takeof:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch uav_ros_control pid_carrot.launch --wait
+        - rosrun ardupilot_gazebo automatic_takeoff.sh
+  - trajectory:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch uav_ros_tracker topp_tracker.launch --wait
